@@ -1,0 +1,27 @@
+{% extends 'api/base.html' %} 
+
+{% block body %}
+<div>
+    <h1>SHORT URL</h1>
+</div>
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Wrties a long url</p>
+        <div>{{form.url_long}}</div>
+        <button type="submit">
+            Write
+        </button>
+    </form>
+    <hr>
+
+    {% if new_url %}
+        <div>
+            <h2>New short url</h2>
+            <p>{{new_url}}</p>
+            <p>Full URL: {{long_url}}</p>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock body %}
