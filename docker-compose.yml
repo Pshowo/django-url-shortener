@@ -1,0 +1,27 @@
+version: "3"
+services:
+    db_app:
+        image: postgres
+        volumes:
+            - db_data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: django_db
+        networks:
+            - db_net
+
+    dj_app:
+        build: ./mysite
+        image: dj_image
+        networks:
+            - db_net
+        ports:
+            - 8080:8080
+        depends_on:
+            - db_app
+networks:
+    db_net:
+
+volumes:
+    db_data:
