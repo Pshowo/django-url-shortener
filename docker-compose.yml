@@ -1,0 +1,28 @@
+version: "3"
+services:
+    db_app:
+        image: postgres
+        volumes:
+            - db_data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: django_db
+        networks:
+            - db_net
+
+    dj_app:
+        image: pshowo/django_url
+        command: >
+            sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8080 mysite.wsgi"
+        networks:
+            - db_net
+        ports:
+            - 8080:8080
+        depends_on:
+            - db_app
+networks:
+    db_net:
+
+volumes:
+    db_data:

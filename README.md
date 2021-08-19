@@ -1,5 +1,36 @@
 # django-url-shortener
 
+## Run
+
+    `sudo docker-compose up --build`
+
+[http://127.0.0.1:8000](http://127.0.01:8000)
+
+## API
+
+- GET - _get all urls list_
+
+    `/v1/api/urls/`
+
+- POST - _post a new url and get shorten url_
+
+    `/v1/api/urls/`
+
+    JSON:
+
+        {
+        "url_long": "Put here your long url address"
+        }
+
+    Example:
+
+    `POST` - `http://127.0.01:8000/v1/api/urls/`
+
+        {
+        "url_long": "https://unsplash.com/photos/h3WaTQtMG_0"
+        }
+
+---
 > python3, django, drf, docker, test
 
 Aplikacja umożliwiająca skracanie linków przez

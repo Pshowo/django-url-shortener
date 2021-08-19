@@ -1,0 +1,26 @@
+{% extends 'api/base.html' %} 
+
+{% block body %}
+<table class="table">
+    <thead>
+      <tr>
+        <th>Detail</th>
+        <th scope="col">Shrot url</th>
+        <th scope="col">Long url</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for url in urls %}
+      <tr>
+        <th><a href="{{url.id}}">Details</a></th>
+        <td><a href="{{url.url_short}}">{{url.url_short}}</a></td>
+        <th scope="row">{{url.url_long}}</th>
+      </tr>
+      {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock body %}
