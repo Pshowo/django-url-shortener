@@ -1,13 +1,10 @@
-{% extends 'website/base.html' %} 
+{% extends 'api/base.html' %} 
 
 {% block body %}
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Created by</th>
-        <th scope="col">Date added</th>
-        <th scope="col">Time added</th>
-        <th scope="col">Count</th>
+        <th>Detail</th>
         <th scope="col">Shrot url</th>
         <th scope="col">Long url</th>
       </tr>
@@ -16,11 +13,8 @@
 
       {% for url in urls %}
       <tr>
-        <th>anonymous</th>
-        <td>{{url.time_added|date:"Y-m-d"}}</td>
-        <td>{{url.time_added|date:"G:i:s"}}</td>
-        <td>{{url.count}}</td>
-        <td><a href="http://127.0.0.1:8000/{{url.url_short}}">http://127.0.0.1:8000/{{url.url_short}}</a></td>
+        <th><a href="{{url.id}}">Details</a></th>
+        <td><a href="{{url.url_short}}">{{url.url_short}}</a></td>
         <th scope="row">{{url.url_long}}</th>
       </tr>
       {% endfor %}

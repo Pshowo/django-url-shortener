@@ -1,5 +1,21 @@
 # django-url-shortener
 
+## API
+
+- GET - _get all urls list_
+
+    `/v1/api/urls/`
+
+- POST - _post a new url and get shorten url_
+
+    `/v1/api/urls/`
+
+    JSON:
+
+        {
+        "url_long": "Put here your long url address"
+        }
+
 > python3, django, drf, docker, test
 
 Aplikacja umożliwiająca skracanie linków przez

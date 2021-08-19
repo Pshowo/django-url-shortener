@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.urls import path
+from django.urls.conf import include
 from . import views
+from rest_framework import routers
 
-appname = "shortener"
+# appname = "shortener"
+router = routers.DefaultRouter()
+router.register(r'urls', views.UrlsViewSet,basename='MyModel')
+urlpatterns = router.urls
 
 urlpatterns = [
-    # Home view
-    path("", views.index, name="home"),
-    path('<str:short_url>', views.redirect_url, name="redirect"),
+    path("", include(router.urls)),
 ]

@@ -1,9 +1,10 @@
 
 from django.contrib import admin
 from django.urls import path, include
-
+from api import views 
+app_name = "main"
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('list/', include('website.urls')),
-    path("", include('api.urls')),
+    path('statistics/', include('website.urls')),
+    path("v1/api/", include('api.urls')),
+    path('<str:short_url>/', views.redirect_url, name="url-redirect"),
 ]

@@ -1,5 +1,4 @@
 from django.db import models
-from .utils import random_url_short
 
 # Create your models here.
 class Shortener(models.Model):
@@ -7,12 +6,8 @@ class Shortener(models.Model):
     count = models.IntegerField(default=0)
     url_long = models.URLField()
     url_short = models.CharField(max_length=150, blank=True, unique=True)
+    user_ip = models.CharField(max_length=12, blank=True)
+    user_agent = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return f"{self.url_short} - {self.url_long}"
-
-    def save(self, *args, **kwargs):
-        if not self.url_short:
-            self.url_short = random_url_short(self)
-
-        super().save(*args, **kwargs)

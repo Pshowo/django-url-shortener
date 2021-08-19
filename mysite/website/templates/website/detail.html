@@ -1,0 +1,13 @@
+{% extends 'api/base.html' %} 
+{% block body %}
+<h2>Detail shorten url</h2>
+<hr>
+<div><b>Shrot URL</b>: <a href="http://127.0.0.1:8000/{{url.url_short}}">http://127.0.0.1:8000/{{url.url_short}}</a></div>
+<div><b>Long URL</b>: {{url.url_long}}</div>
+<br>
+<div><b>Created by</b>: {{url.user_ip}}, {{url.time_added|date:"Y-m-d"}} {{url.time_added|date:"G:i:s"}}</div>
+<div><b>User agent</b>: {{url.user_agent}}</div>
+<div><b>Visits</b>: {{url.count}}</div>
+<hr>
+<p><a href="{% url 'url_list' %}">Back</a></p>
+{% endblock body %}
