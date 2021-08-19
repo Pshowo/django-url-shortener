@@ -12,8 +12,9 @@ services:
             - db_net
 
     dj_app:
-        build: ./mysite
-        image: dj_image
+        image: pshowo/django_url
+        command: >
+            sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8080 mysite.wsgi"
         networks:
             - db_net
         ports:
